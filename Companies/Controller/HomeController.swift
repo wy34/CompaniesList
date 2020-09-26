@@ -22,7 +22,7 @@ class HomeController: UITableViewController {
         let newAppearance = UINavigationBarAppearance()
         newAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         newAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        newAppearance.backgroundColor = UIColor(red: 247/255, green: 66/255, blue: 82/255, alpha: 1)
+        newAppearance.backgroundColor = .lightRed
 
         navigationController?.navigationBar.scrollEdgeAppearance = newAppearance
         navigationController?.navigationBar.standardAppearance = newAppearance
@@ -35,7 +35,7 @@ class HomeController: UITableViewController {
     }
     
     func configureTableView() {
-        tableView.backgroundColor = UIColor(red: 9/255, green: 45/255, blue: 64/255, alpha: 1)
+        tableView.backgroundColor = .darkBlue
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         tableView.tableFooterView = UIView()
     }
@@ -54,7 +54,7 @@ extension HomeController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        cell.backgroundColor = UIColor(red: 48/255, green: 164/255, blue: 182/255, alpha: 1)
+        cell.backgroundColor = .tealColor
         return cell
     }
 }

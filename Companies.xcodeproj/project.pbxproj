@@ -14,6 +14,7 @@
 		3DD8C50B251FCDC7007739F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD8C50A251FCDC7007739F7 /* Assets.xcassets */; };
 		3DD8C50E251FCDC7007739F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DD8C50C251FCDC7007739F7 /* LaunchScreen.storyboard */; };
 		3DD8C51B251FD280007739F7 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C51A251FD280007739F7 /* CustomNavigationController.swift */; };
+		3DD8C521251FDB2C007739F7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C520251FDB2C007739F7 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3DD8C50D251FCDC7007739F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DD8C50F251FCDC7007739F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DD8C51A251FD280007739F7 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		3DD8C520251FDB2C007739F7 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		3DD8C500251FCDC5007739F7 /* Companies */ = {
 			isa = PBXGroup;
 			children = (
+				3DD8C51F251FDB1A007739F7 /* Extensions */,
 				3DD8C501251FCDC5007739F7 /* AppDelegate.swift */,
 				3DD8C503251FCDC5007739F7 /* SceneDelegate.swift */,
 				3DD8C519251FD265007739F7 /* Views */,
@@ -84,6 +87,14 @@
 				3DD8C51A251FD280007739F7 /* CustomNavigationController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3DD8C51F251FDB1A007739F7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3DD8C520251FDB2C007739F7 /* UIColor.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +171,7 @@
 				3DD8C506251FCDC5007739F7 /* HomeController.swift in Sources */,
 				3DD8C502251FCDC5007739F7 /* AppDelegate.swift in Sources */,
 				3DD8C504251FCDC5007739F7 /* SceneDelegate.swift in Sources */,
+				3DD8C521251FDB2C007739F7 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
