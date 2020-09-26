@@ -36,6 +36,7 @@ class HomeController: UITableViewController {
     
     func configureTableView() {
         tableView.backgroundColor = .darkBlue
+        tableView.separatorColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         tableView.tableFooterView = UIView()
     }
@@ -56,5 +57,15 @@ extension HomeController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         cell.backgroundColor = .tealColor
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .lightBlue
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 }
