@@ -36,7 +36,8 @@ class HomeController: UITableViewController {
     
     func configureTableView() {
         tableView.backgroundColor = UIColor(red: 9/255, green: 45/255, blue: 64/255, alpha: 1)
-        tableView.separatorStyle = .none
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.tableFooterView = UIView()
     }
     
     // MARK: - Selectors
@@ -45,3 +46,15 @@ class HomeController: UITableViewController {
     }
 }
 
+// MARK: - UITableViewDelegate/Datasource
+extension HomeController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        cell.backgroundColor = UIColor(red: 48/255, green: 164/255, blue: 182/255, alpha: 1)
+        return cell
+    }
+}
