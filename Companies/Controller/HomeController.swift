@@ -9,6 +9,11 @@ import UIKit
 
 class HomeController: UITableViewController {
     // MARK: - Properties
+    let companies = [
+        Company(name: "Apple", founded: Date()),
+        Company(name: "Google", founded: Date()),
+        Company(name: "Facebook", founded: Date())
+    ]
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -50,12 +55,15 @@ class HomeController: UITableViewController {
 // MARK: - UITableViewDelegate/Datasource
 extension HomeController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return companies.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         cell.backgroundColor = .tealColor
+        cell.textLabel?.text = companies[indexPath.row].name
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        cell.textLabel?.textColor = .white
         return cell
     }
 
