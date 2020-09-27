@@ -8,17 +8,54 @@
 import UIKit
 
 class CreateCompanyController: UIViewController {
+    // MARK: - Properties
+    private let nameBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightBlue
+        return view
+    }()
+    
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Name"
+        return label
+    }()
+    
+    private let nameTextfield: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Enter name"
+        return tf
+    }()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configNavBar()
+        configUI()
     }
     
     // MARK: - Helpers
     func configNavBar() {
         setupNavBarStyle(withTitle: "Create Company")
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
+    }
+    
+    
+    func configUI() {
+        view.backgroundColor = .darkBlue
+        
+        view.addSubview(nameBackgroundView)
+        nameBackgroundView.anchor(top: view.topAnchor, right: view.rightAnchor, left: view.leftAnchor)
+        nameBackgroundView.setDimension(hConst: 50)
+        
+        nameBackgroundView.addSubviews(nameLabel, nameTextfield)
+        
+        nameLabel.center(to: nameBackgroundView, by: .centerY)
+        nameLabel.center(to: nameBackgroundView, by: .centerX, withMultiplierOf: 0.18)
+        nameTextfield.center(to: nameLabel, by: .centerY)
+        nameTextfield.setDimension(width: nameBackgroundView.widthAnchor, wMult: 0.68)
+        nameTextfield.center(to: nameBackgroundView, by: .centerX, withMultiplierOf: 1.25)
     }
     
     // MARK: - Selector
@@ -26,4 +63,7 @@ class CreateCompanyController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @objc func handleSave() {
+        
+    }
 }
