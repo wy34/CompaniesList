@@ -9,7 +9,7 @@ import UIKit
 
 class HomeController: UITableViewController {
     // MARK: - Properties
-    let companies = [
+    var companies = [
         Company(name: "Apple", founded: Date()),
         Company(name: "Google", founded: Date()),
         Company(name: "Facebook", founded: Date())
@@ -38,6 +38,7 @@ class HomeController: UITableViewController {
     // MARK: - Selectors
     @objc func handleAddCompany() {
         let createCompanyController = CreateCompanyController()
+        createCompanyController.delegate = self
         let navController = CustomNavigationController(rootViewController: createCompanyController)
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true, completion: nil)
@@ -67,5 +68,13 @@ extension HomeController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+}
+
+// MARK: - CreateCompanyControllerDelegate
+extension HomeController: CreateCompanyControllerDelegate {
+    func didAddCompany(company: Company) {
+        companies.append(company)
+        tableView.insertRows(at: [IndexPath(row: companies.count - 1, section: 0)], with: .automatic)
     }
 }

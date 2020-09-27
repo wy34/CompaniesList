@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol CreateCompanyControllerDelegate: class {
+    func didAddCompany(company: Company)
+}
+
 class CreateCompanyController: UIViewController {
     // MARK: - Properties
+    weak var delegate: CreateCompanyControllerDelegate?
+    
     private let nameBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .lightBlue
@@ -35,14 +41,14 @@ class CreateCompanyController: UIViewController {
     }
     
     // MARK: - Helpers
-    func configNavBar() {
+    private func configNavBar() {
         setupNavBarStyle(withTitle: "Create Company")
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     }
     
     
-    func configUI() {
+    private func configUI() {
         view.backgroundColor = .darkBlue
         
         view.addSubview(nameBackgroundView)
@@ -64,6 +70,11 @@ class CreateCompanyController: UIViewController {
     }
 
     @objc func handleSave() {
+        guard let companyName = nameTextfield.text, !companyName.isEmpty else { return }
+        let newCompany = Company(name: companyName, founded: Date())
         
+        dismiss(animated: true) {
+            self.delegate?.didAddCompany(company: newCompany)
+        }
     }
 }
