@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D6C4DB22520F88B00314930 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C4DB12520F88B00314930 /* UIView.swift */; };
 		3DD8C502251FCDC5007739F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C501251FCDC5007739F7 /* AppDelegate.swift */; };
 		3DD8C504251FCDC5007739F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C503251FCDC5007739F7 /* SceneDelegate.swift */; };
 		3DD8C506251FCDC5007739F7 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C505251FCDC5007739F7 /* HomeController.swift */; };
@@ -17,10 +18,11 @@
 		3DD8C521251FDB2C007739F7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C520251FDB2C007739F7 /* UIColor.swift */; };
 		3DD8C5252520386C007739F7 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C5242520386C007739F7 /* Company.swift */; };
 		3DD8C52825203C0A007739F7 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C52725203C0A007739F7 /* CreateCompanyController.swift */; };
-		3DD8C52B25203F7E007739F7 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C52A25203F7E007739F7 /* UIView.swift */; };
+		3DD8C52B25203F7E007739F7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C52A25203F7E007739F7 /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D6C4DB12520F88B00314930 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		3DD8C4FE251FCDC5007739F7 /* Companies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Companies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD8C501251FCDC5007739F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DD8C503251FCDC5007739F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +35,7 @@
 		3DD8C520251FDB2C007739F7 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		3DD8C5242520386C007739F7 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		3DD8C52725203C0A007739F7 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
-		3DD8C52A25203F7E007739F7 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		3DD8C52A25203F7E007739F7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				3DD8C520251FDB2C007739F7 /* UIColor.swift */,
-				3DD8C52A25203F7E007739F7 /* UIView.swift */,
+				3DD8C52A25203F7E007739F7 /* UIViewController.swift */,
+				3D6C4DB12520F88B00314930 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -184,13 +187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DD8C52B25203F7E007739F7 /* UIView.swift in Sources */,
+				3DD8C52B25203F7E007739F7 /* UIViewController.swift in Sources */,
 				3DD8C51B251FD280007739F7 /* CustomNavigationController.swift in Sources */,
 				3DD8C506251FCDC5007739F7 /* HomeController.swift in Sources */,
 				3DD8C502251FCDC5007739F7 /* AppDelegate.swift in Sources */,
 				3DD8C52825203C0A007739F7 /* CreateCompanyController.swift in Sources */,
 				3DD8C504251FCDC5007739F7 /* SceneDelegate.swift in Sources */,
 				3DD8C521251FDB2C007739F7 /* UIColor.swift in Sources */,
+				3D6C4DB22520F88B00314930 /* UIView.swift in Sources */,
 				3DD8C5252520386C007739F7 /* Company.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
