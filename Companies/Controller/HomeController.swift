@@ -24,18 +24,7 @@ class HomeController: UITableViewController {
 
     // MARK: - Helpers
     func configureNavBar() {
-        let newAppearance = UINavigationBarAppearance()
-        newAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        newAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        newAppearance.backgroundColor = .lightRed
-
-        navigationController?.navigationBar.scrollEdgeAppearance = newAppearance
-        navigationController?.navigationBar.standardAppearance = newAppearance
-        navigationController?.navigationBar.compactAppearance = newAppearance
-        
-        title = "Companies"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.isTranslucent = false
+        setupNavBarStyle(withTitle: "Companies")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
     }
     
@@ -48,7 +37,10 @@ class HomeController: UITableViewController {
     
     // MARK: - Selectors
     @objc func handleAddCompany() {
-        print("Adding company...")
+        let createCompanyController = CreateCompanyController()
+        let navController = CustomNavigationController(rootViewController: createCompanyController)
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true, completion: nil)
     }
 }
 
