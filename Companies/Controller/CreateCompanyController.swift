@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol CreateCompanyControllerDelegate: class {
     func didAddCompany(company: Company)
@@ -71,10 +72,17 @@ class CreateCompanyController: UIViewController {
 
     @objc func handleSave() {
         guard let companyName = nameTextfield.text, !companyName.isEmpty else { return }
-        let newCompany = Company(name: companyName, founded: Date())
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        let company = Company(context: context)
+        company.name = companyName
         
-        dismiss(animated: true) {
-            self.delegate?.didAddCompany(company: newCompany)
+        do {
+            try context.save()
+            dismiss(animated: true) {
+                self.delegate?.didAddCompany(company: company)
+            }
+        } catch let err {
+            print("Failed to save company: \(err)")
         }
     }
 }
