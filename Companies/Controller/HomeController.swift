@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeController: UITableViewController {
     // MARK: - Properties
@@ -16,20 +17,34 @@ class HomeController: UITableViewController {
         super.viewDidLoad()
         configureNavBar()
         configureTableView()
+        fetchCompanies()
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
 
     // MARK: - Helpers
-    func configureNavBar() {
+    private func configureNavBar() {
         setupNavBarStyle(withTitle: "Companies")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         tableView.backgroundColor = .darkBlue
         tableView.separatorColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         tableView.tableFooterView = UIView()
+    }
+    
+    
+    private func fetchCompanies() {
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        let request: NSFetchRequest<Company> = Company.fetchRequest()
+        
+        do {
+            self.companies = try context.fetch(request)
+            self.tableView.reloadData()
+        } catch let err {
+            print("Failed to load companies: \(err)")
+        }
     }
     
     // MARK: - Selectors

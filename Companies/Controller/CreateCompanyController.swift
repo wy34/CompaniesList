@@ -48,7 +48,6 @@ class CreateCompanyController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     }
     
-    
     private func configUI() {
         view.backgroundColor = .darkBlue
         
@@ -73,13 +72,13 @@ class CreateCompanyController: UIViewController {
     @objc func handleSave() {
         guard let companyName = nameTextfield.text, !companyName.isEmpty else { return }
         let context = CoreDataManager.shared.persistentContainer.viewContext
-        let company = Company(context: context)
-        company.name = companyName
+        let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
+        company.setValue(companyName, forKey: "name")
         
         do {
             try context.save()
             dismiss(animated: true) {
-                self.delegate?.didAddCompany(company: company)
+                self.delegate?.didAddCompany(company: company as! Company)
             }
         } catch let err {
             print("Failed to save company: \(err)")
