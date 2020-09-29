@@ -81,6 +81,31 @@ extension HomeController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
+            print("Editing")
+            completion(true)
+        }
+        editAction.backgroundColor = .gray
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+            let context = CoreDataManager.shared.persistentContainer.viewContext
+            let companyToDelete = self.companies[indexPath.row]
+            self.companies.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            context.delete(companyToDelete)
+            
+            do {
+                try context.save()
+            } catch let saveErr {
+                print("Failed to save deletion: \(saveErr)")
+            }
+        }
+        deleteAction.backgroundColor = .red
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+    }
 }
 
 // MARK: - CreateCompanyControllerDelegate
