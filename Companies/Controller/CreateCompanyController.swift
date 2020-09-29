@@ -87,7 +87,7 @@ class CreateCompanyController: UIViewController {
     }
     
     private func updateCompany() {
-        guard let newName = nameTextfield.text else { return }
+        guard let newName = nameTextfield.text, !newName.isEmpty else { return }
         companyToEdit!.name = newName
         CoreDataManager.shared.save()
         dismiss(animated: true) { self.delegate?.didUpdateCompany(company: self.companyToEdit!) }
