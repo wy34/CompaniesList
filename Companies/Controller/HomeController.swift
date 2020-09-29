@@ -37,6 +37,14 @@ class HomeController: UITableViewController {
     private func fetchCompanies() {
         self.companies = CoreDataManager.shared.fetchCompanies()
     }
+    
+    private func edit(company: Company) {
+        let createCompanyController = CreateCompanyController()
+        createCompanyController.companyToEdit = company
+        let navController = CustomNavigationController(rootViewController: createCompanyController)
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true)
+    }
         
     // MARK: - Selectors
     @objc func handleAddCompany() {
@@ -74,17 +82,19 @@ extension HomeController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let companyToEditDelete = self.companies[indexPath.row]
+        
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
-            print("Editing")
+            self.edit(company: companyToEditDelete)
             completion(true)
         }
         editAction.backgroundColor = .darkBlue
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            let companyToDelete = self.companies[indexPath.row]
             self.companies.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            CoreDataManager.shared.delete(companyToDelete)
+            CoreDataManager.shared.delete(companyToEditDelete)
+            completion(true)
         }
         deleteAction.backgroundColor = .lightRed
         

@@ -14,6 +14,13 @@ protocol CreateCompanyControllerDelegate: class {
 
 class CreateCompanyController: UIViewController {
     // MARK: - Properties
+    var companyToEdit: Company? {
+        didSet {
+            guard let company = companyToEdit else { return }
+            nameTextfield.text = company.name
+        }
+    }
+    
     weak var delegate: CreateCompanyControllerDelegate?
     
     private let nameBackgroundView: UIView = {
@@ -39,6 +46,11 @@ class CreateCompanyController: UIViewController {
         super.viewDidLoad()
         configNavBar()
         configUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = self.companyToEdit != nil ? "Edit Company" : "Create Company"
     }
     
     // MARK: - Helpers
