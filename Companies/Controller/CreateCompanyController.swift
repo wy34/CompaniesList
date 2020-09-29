@@ -75,13 +75,7 @@ class CreateCompanyController: UIViewController {
         let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
         company.setValue(companyName, forKey: "name")
         
-        do {
-            try context.save()
-            dismiss(animated: true) {
-                self.delegate?.didAddCompany(company: company as! Company)
-            }
-        } catch let err {
-            print("Failed to save company: \(err)")
-        }
+        CoreDataManager.shared.save(withContext: context)
+        dismiss(animated: true) { self.delegate?.didAddCompany(company: company as! Company) }
     }
 }

@@ -22,4 +22,17 @@ struct CoreDataManager {
         
         return container
     }()
+    
+    func save(withContext context: NSManagedObjectContext) {
+        do {
+            try context.save()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func delete(_ company: Company, withContext context: NSManagedObjectContext) {
+        context.delete(company)
+        save(withContext: context)
+    }
 }

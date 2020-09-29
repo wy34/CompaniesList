@@ -46,7 +46,7 @@ class HomeController: UITableViewController {
             print("Failed to load companies: \(err)")
         }
     }
-    
+        
     // MARK: - Selectors
     @objc func handleAddCompany() {
         let createCompanyController = CreateCompanyController()
@@ -94,13 +94,7 @@ extension HomeController {
             let companyToDelete = self.companies[indexPath.row]
             self.companies.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            context.delete(companyToDelete)
-            
-            do {
-                try context.save()
-            } catch let saveErr {
-                print("Failed to save deletion: \(saveErr)")
-            }
+            CoreDataManager.shared.delete(companyToDelete, withContext: context)
         }
         deleteAction.backgroundColor = .red
         
