@@ -34,17 +34,8 @@ class HomeController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
     
-    
     private func fetchCompanies() {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let request: NSFetchRequest<Company> = Company.fetchRequest()
-        
-        do {
-            self.companies = try context.fetch(request)
-            self.tableView.reloadData()
-        } catch let err {
-            print("Failed to load companies: \(err)")
-        }
+        self.companies = CoreDataManager.shared.fetchCompanies()
     }
         
     // MARK: - Selectors
@@ -87,16 +78,15 @@ extension HomeController {
             print("Editing")
             completion(true)
         }
-        editAction.backgroundColor = .gray
+        editAction.backgroundColor = .darkBlue
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            let context = CoreDataManager.shared.persistentContainer.viewContext
             let companyToDelete = self.companies[indexPath.row]
             self.companies.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            CoreDataManager.shared.delete(companyToDelete, withContext: context)
+            CoreDataManager.shared.delete(companyToDelete)
         }
-        deleteAction.backgroundColor = .red
+        deleteAction.backgroundColor = .lightRed
         
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }

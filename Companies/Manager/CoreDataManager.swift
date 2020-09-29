@@ -23,16 +23,27 @@ struct CoreDataManager {
         return container
     }()
     
-    func save(withContext context: NSManagedObjectContext) {
+    func save() {
         do {
-            try context.save()
+            try persistentContainer.viewContext.save()
         } catch let error {
             print(error.localizedDescription)
         }
     }
     
-    func delete(_ company: Company, withContext context: NSManagedObjectContext) {
-        context.delete(company)
-        save(withContext: context)
+    func delete(_ company: Company) {
+        persistentContainer.viewContext.delete(company)
+        save()
+    }
+    
+    func fetchCompanies() -> [Company] {
+        let request: NSFetchRequest<Company> = Company.fetchRequest()
+        
+        do {
+            return try persistentContainer.viewContext.fetch(request)
+        } catch let err {
+            print(err.localizedDescription)
+            return []
+        }
     }
 }
