@@ -10,6 +10,7 @@ import CoreData
 
 protocol CreateCompanyControllerDelegate: class {
     func didAddCompany(company: Company)
+    func didUpdateCompany(company: Company)
 }
 
 class CreateCompanyController: UIViewController {
@@ -76,18 +77,33 @@ class CreateCompanyController: UIViewController {
         nameTextfield.center(to: nameBackgroundView, by: .centerX, withMultiplierOf: 1.25)
     }
     
+    private func createNewCompany()  {
+        guard let companyName = nameTextfield.text, !companyName.isEmpty else { return }
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
+        company.setValue(companyName, forKey: "name")
+        CoreDataManager.shared.save()
+        dismiss(animated: true) { self.delegate?.didAddCompany(company: company as! Company) }
+    }
+    
+    private func updateCompany() {
+        guard let newName = nameTextfield.text else { return }
+        companyToEdit!.name = newName
+        CoreDataManager.shared.save()
+        dismiss(animated: true) { self.delegate?.didUpdateCompany(company: self.companyToEdit!) }
+    }
+    
+    
     // MARK: - Selector
     @objc func handleCancel() {
         dismiss(animated: true, completion: nil)
     }
 
     @objc func handleSave() {
-        guard let companyName = nameTextfield.text, !companyName.isEmpty else { return }
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
-        company.setValue(companyName, forKey: "name")
-        
-        CoreDataManager.shared.save()
-        dismiss(animated: true) { self.delegate?.didAddCompany(company: company as! Company) }
+        if companyToEdit != nil {
+            updateCompany()
+        } else {
+            createNewCompany()
+        }
     }
 }

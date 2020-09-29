@@ -38,21 +38,26 @@ class HomeController: UITableViewController {
         self.companies = CoreDataManager.shared.fetchCompanies()
     }
     
-    private func edit(company: Company) {
+    private func goToCreateCompanyController(withCompany company: Company? = nil) {
         let createCompanyController = CreateCompanyController()
-        createCompanyController.companyToEdit = company
+        createCompanyController.delegate = self
+        
+        if let company = company {
+            createCompanyController.companyToEdit = company
+        }
+        
         let navController = CustomNavigationController(rootViewController: createCompanyController)
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true)
     }
+    
+    private func edit(company: Company) {
+        goToCreateCompanyController(withCompany: company)
+    }
         
     // MARK: - Selectors
     @objc func handleAddCompany() {
-        let createCompanyController = CreateCompanyController()
-        createCompanyController.delegate = self
-        let navController = CustomNavigationController(rootViewController: createCompanyController)
-        navController.modalPresentationStyle = .fullScreen
-        present(navController, animated: true, completion: nil)
+        goToCreateCompanyController()
     }
 }
 
@@ -104,6 +109,12 @@ extension HomeController {
 
 // MARK: - CreateCompanyControllerDelegate
 extension HomeController: CreateCompanyControllerDelegate {
+    func didUpdateCompany(company: Company) {
+        guard let row = companies.firstIndex(of: company) else { return }
+        let indexPath = IndexPath(row: row, section: 0)
+        tableView.reloadRows(at: [indexPath], with: .middle)
+    }
+    
     func didAddCompany(company: Company) {
         companies.append(company)
         tableView.insertRows(at: [IndexPath(row: companies.count - 1, section: 0)], with: .automatic)
