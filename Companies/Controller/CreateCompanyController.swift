@@ -107,6 +107,11 @@ class CreateCompanyController: UIViewController {
         let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
         company.setValue(companyName, forKey: "name")
         company.setValue(datePicker.date, forKey: "founded")
+        
+        if let imageData = profileImage.image?.jpegData(compressionQuality: 0.8) {
+            company.setValue(imageData, forKey: "image")
+        }
+        
         CoreDataManager.shared.save()
         dismiss(animated: true) { self.delegate?.didAddCompany(company: company as! Company) }
     }
