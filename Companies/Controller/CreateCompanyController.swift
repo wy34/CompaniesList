@@ -19,6 +19,7 @@ class CreateCompanyController: UIViewController {
         didSet {
             guard let company = companyToEdit else { return }
             nameTextfield.text = company.name
+            datePicker.date = company.founded!
         }
     }
     
@@ -101,6 +102,7 @@ class CreateCompanyController: UIViewController {
     private func updateCompany() {
         guard let newName = nameTextfield.text, !newName.isEmpty else { return }
         companyToEdit!.name = newName
+        companyToEdit?.founded = datePicker.date
         CoreDataManager.shared.save()
         dismiss(animated: true) { self.delegate?.didUpdateCompany(company: self.companyToEdit!) }
     }
