@@ -48,4 +48,14 @@ struct CoreDataManager {
             return []
         }
     }
+    
+    func batchDeleteCompanies() {
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: Company.fetchRequest())
+        
+        do {
+            try persistentContainer.viewContext.execute(batchDeleteRequest)
+        } catch let deleteError {
+            print(deleteError.localizedDescription)
+        }
+    }
 }

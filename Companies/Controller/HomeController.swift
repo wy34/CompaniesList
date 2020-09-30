@@ -25,6 +25,7 @@ class HomeController: UITableViewController {
     private func configureNavBar() {
         setupNavBarStyle(withTitle: "Companies")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
     }
     
     private func configureTableView() {
@@ -56,8 +57,14 @@ class HomeController: UITableViewController {
     }
         
     // MARK: - Selectors
-    @objc func handleAddCompany() {
+    @objc private func handleAddCompany() {
         goToCreateCompanyController()
+    }
+    
+    @objc private func handleReset() {
+        CoreDataManager.shared.batchDeleteCompanies()
+        companies.removeAll()
+        tableView.reloadData()
     }
 }
 
