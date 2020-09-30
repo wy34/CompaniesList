@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 struct CoreDataManager {
+    // MARK: - Properties
     static let shared = CoreDataManager()
     
     let persistentContainer: NSPersistentContainer = {
@@ -23,6 +24,7 @@ struct CoreDataManager {
         return container
     }()
     
+    // MARK: - Crud Methods
     func save() {
         do {
             try persistentContainer.viewContext.save()

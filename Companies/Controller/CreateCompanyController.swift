@@ -41,6 +41,13 @@ class CreateCompanyController: UIViewController {
         tf.placeholder = "Enter name"
         return tf
     }()
+    
+    private let datePicker: UIDatePicker = {
+        let dp = UIDatePicker()
+        dp.preferredDatePickerStyle = .wheels
+        dp.datePickerMode = .date
+        return dp
+    }()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -66,15 +73,19 @@ class CreateCompanyController: UIViewController {
         
         view.addSubview(nameBackgroundView)
         nameBackgroundView.anchor(top: view.topAnchor, right: view.rightAnchor, left: view.leftAnchor)
-        nameBackgroundView.setDimension(hConst: 50)
+        nameBackgroundView.setDimension(height: view.heightAnchor, hMult: 0.38)
         
-        nameBackgroundView.addSubviews(nameLabel, nameTextfield)
-        
-        nameLabel.center(to: nameBackgroundView, by: .centerY)
+        nameBackgroundView.addSubviews(nameLabel, nameTextfield, datePicker)
+    
+        nameLabel.anchor(top: nameBackgroundView.topAnchor)
+        nameLabel.setDimension(height: nameBackgroundView.heightAnchor, hMult: 0.2)
         nameLabel.center(to: nameBackgroundView, by: .centerX, withMultiplierOf: 0.18)
+        
         nameTextfield.center(to: nameLabel, by: .centerY)
         nameTextfield.setDimension(width: nameBackgroundView.widthAnchor, wMult: 0.68)
         nameTextfield.center(to: nameBackgroundView, by: .centerX, withMultiplierOf: 1.25)
+        
+        datePicker.anchor(top: nameLabel.bottomAnchor, right: nameBackgroundView.rightAnchor, left: nameBackgroundView.leftAnchor)
     }
     
     private func createNewCompany()  {
