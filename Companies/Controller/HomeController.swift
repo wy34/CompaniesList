@@ -78,6 +78,11 @@ extension HomeController {
         cell.textLabel?.text = "\(name) - Founded \(foundedDateString)"
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         cell.textLabel?.textColor = .white
+        
+        if let imageData = company.image {
+            cell.imageView?.image = UIImage(data: imageData)
+        }
+        
         return cell
     }
 

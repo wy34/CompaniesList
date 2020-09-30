@@ -32,7 +32,8 @@ class CreateCompanyController: UIViewController {
     }()
     
     private lazy var profileImage: UIImageView = {
-        let iv = UIImageView(image: #imageLiteral(resourceName: "select"))
+        let iv = UIImageView()
+        iv.image = #imageLiteral(resourceName: "select")
         iv.isUserInteractionEnabled = true
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageSelectorTapped)))
         iv.clipsToBounds = true
