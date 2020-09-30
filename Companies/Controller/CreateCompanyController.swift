@@ -85,7 +85,7 @@ class CreateCompanyController: UIViewController {
         nameTextfield.setDimension(width: nameBackgroundView.widthAnchor, wMult: 0.68)
         nameTextfield.center(to: nameBackgroundView, by: .centerX, withMultiplierOf: 1.25)
         
-        datePicker.anchor(top: nameLabel.bottomAnchor, right: nameBackgroundView.rightAnchor, left: nameBackgroundView.leftAnchor)
+        datePicker.anchor(top: nameLabel.bottomAnchor, right: nameBackgroundView.rightAnchor, bottom: nameBackgroundView.bottomAnchor, left: nameBackgroundView.leftAnchor)
     }
     
     private func createNewCompany()  {
@@ -93,6 +93,7 @@ class CreateCompanyController: UIViewController {
         let context = CoreDataManager.shared.persistentContainer.viewContext
         let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
         company.setValue(companyName, forKey: "name")
+        company.setValue(datePicker.date, forKey: "founded")
         CoreDataManager.shared.save()
         dismiss(animated: true) { self.delegate?.didAddCompany(company: company as! Company) }
     }
