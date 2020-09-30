@@ -69,8 +69,13 @@ extension HomeController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        let company = companies[indexPath.row]
+        guard let name = company.name, let founded = company.founded else { return UITableViewCell() }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        let foundedDateString = dateFormatter.string(from: founded)
         cell.backgroundColor = .tealColor
-        cell.textLabel?.text = companies[indexPath.row].name
+        cell.textLabel?.text = "\(name) - Founded \(foundedDateString)"
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         cell.textLabel?.textColor = .white
         return cell
