@@ -31,6 +31,14 @@ class CreateCompanyController: UIViewController {
         return view
     }()
     
+    private lazy var profileImage: UIImageView = {
+        let iv = UIImageView(image: #imageLiteral(resourceName: "select"))
+        iv.isUserInteractionEnabled = true
+        iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageSelectorTapped)))
+        iv.clipsToBounds = true
+        return iv
+    }()
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name"
@@ -74,11 +82,15 @@ class CreateCompanyController: UIViewController {
         
         view.addSubview(nameBackgroundView)
         nameBackgroundView.anchor(top: view.topAnchor, right: view.rightAnchor, left: view.leftAnchor)
-        nameBackgroundView.setDimension(height: view.heightAnchor, hMult: 0.38)
+        nameBackgroundView.setDimension(height: view.heightAnchor, hMult: 0.5)
         
-        nameBackgroundView.addSubviews(nameLabel, nameTextfield, datePicker)
+        nameBackgroundView.addSubviews(profileImage, nameLabel, nameTextfield, datePicker)
+        
+        profileImage.center(to: nameBackgroundView, by: .centerX)
+        profileImage.center(to: nameBackgroundView, by: .centerY, withMultiplierOf: 0.35)
+        profileImage.setDimension(width: nameBackgroundView.widthAnchor, height: nameBackgroundView.widthAnchor, wMult: 0.25, hMult: 0.25)
     
-        nameLabel.anchor(top: nameBackgroundView.topAnchor)
+        nameLabel.anchor(top: profileImage.bottomAnchor)
         nameLabel.setDimension(height: nameBackgroundView.heightAnchor, hMult: 0.2)
         nameLabel.center(to: nameBackgroundView, by: .centerX, withMultiplierOf: 0.18)
         
@@ -119,5 +131,22 @@ class CreateCompanyController: UIViewController {
         } else {
             createNewCompany()
         }
+    }
+    
+    @objc func handleImageSelectorTapped() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+extension CreateCompanyController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        profileImage.image = selectedImage
+        profileImage.layer.cornerRadius = (nameBackgroundView.frame.width * 0.25) / 2
+        dismiss(animated: true, completion: nil)
     }
 }
