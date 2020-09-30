@@ -63,8 +63,16 @@ class HomeController: UITableViewController {
     
     @objc private func handleReset() {
         CoreDataManager.shared.batchDeleteCompanies()
+        
+        var indexPaths = [IndexPath]()
+        
+        for (index, _) in companies.enumerated() {
+            let indexPath = IndexPath(row: index, section: 0)
+            indexPaths.append(indexPath)
+        }
+        
         companies.removeAll()
-        tableView.reloadData()
+        tableView.deleteRows(at: indexPaths, with: .left)
     }
 }
 
@@ -101,8 +109,21 @@ extension HomeController {
         return view
     }
     
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "No companies available..."
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
+    }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return companies.count > 0 ? 0 : 150
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
