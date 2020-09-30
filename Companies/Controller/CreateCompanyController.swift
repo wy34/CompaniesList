@@ -147,6 +147,8 @@ extension CreateCompanyController: UIImagePickerControllerDelegate, UINavigation
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
         profileImage.image = selectedImage
         profileImage.layer.cornerRadius = (nameBackgroundView.frame.width * 0.25) / 2
+        profileImage.layer.borderWidth = 2
+        profileImage.layer.borderColor = UIColor.darkBlue.cgColor
         dismiss(animated: true, completion: nil)
     }
 }
