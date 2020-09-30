@@ -129,6 +129,7 @@ class CreateCompanyController: UIViewController {
         guard let newName = nameTextfield.text, !newName.isEmpty else { return }
         companyToEdit!.name = newName
         companyToEdit?.founded = datePicker.date
+        companyToEdit?.image = profileImage.image?.jpegData(compressionQuality: 0.8)
         CoreDataManager.shared.save()
         dismiss(animated: true) { self.delegate?.didUpdateCompany(company: self.companyToEdit!) }
     }

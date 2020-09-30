@@ -81,6 +81,8 @@ extension HomeController {
         
         if let imageData = company.image {
             cell.imageView?.image = UIImage(data: imageData)
+        } else {
+            cell.imageView?.image = #imageLiteral(resourceName: "select")
         }
         
         return cell
