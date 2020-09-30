@@ -20,6 +20,10 @@ class CreateCompanyController: UIViewController {
             guard let company = companyToEdit else { return }
             nameTextfield.text = company.name
             datePicker.date = company.founded!
+            
+            if let imageData = company.image {
+                profileImage.image = UIImage(data: imageData)
+            }
         }
     }
     
@@ -36,7 +40,11 @@ class CreateCompanyController: UIViewController {
         iv.image = #imageLiteral(resourceName: "select")
         iv.isUserInteractionEnabled = true
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageSelectorTapped)))
-        iv.clipsToBounds = true
+        iv.layer.masksToBounds = true
+        iv.contentMode = .scaleAspectFill
+        iv.layer.cornerRadius = (UIScreen.main.bounds.width * 0.25) / 2
+        iv.layer.borderWidth = 2
+        iv.layer.borderColor = UIColor.darkBlue.cgColor
         return iv
     }()
     
@@ -152,9 +160,6 @@ extension CreateCompanyController: UIImagePickerControllerDelegate, UINavigation
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
         profileImage.image = selectedImage
-        profileImage.layer.cornerRadius = (nameBackgroundView.frame.width * 0.25) / 2
-        profileImage.layer.borderWidth = 2
-        profileImage.layer.borderColor = UIColor.darkBlue.cgColor
         dismiss(animated: true, completion: nil)
     }
 }
