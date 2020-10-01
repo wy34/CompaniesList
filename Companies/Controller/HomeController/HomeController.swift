@@ -24,7 +24,7 @@ class HomeController: UITableViewController {
     // MARK: - Helpers
     private func configureNavBar() {
         setupNavBarStyle(withTitle: "Companies")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
+        setupAddButtonNavItem(withSelector: #selector(handleAddCompany))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
     }
     

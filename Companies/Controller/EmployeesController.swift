@@ -25,7 +25,7 @@ class EmployeesController: UITableViewController {
     // MARK: - Helpers
     private func configUI() {
         view.backgroundColor = .darkBlue
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(handleAdd))
+        setupAddButtonNavItem(withSelector: #selector(handleAdd))
     }
     
     // MARK: - Selectors
