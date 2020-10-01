@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D52E6482525577400078F21 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E6472525577400078F21 /* CompanyCell.swift */; };
+		3D52E64B25257B9900078F21 /* HomeController+UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E64A25257B9900078F21 /* HomeController+UITableViewController.swift */; };
+		3D52E64E25257CD300078F21 /* HomeController+CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E64D25257CD300078F21 /* HomeController+CreateCompanyController.swift */; };
 		3D6C4DB22520F88B00314930 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C4DB12520F88B00314930 /* UIView.swift */; };
 		3D6C4DCC25218CD600314930 /* CompanyDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C4DCA25218CD600314930 /* CompanyDataModel.xcdatamodeld */; };
 		3D6C4DD125218D5700314930 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C4DD025218D5700314930 /* CoreDataManager.swift */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		3D52E6472525577400078F21 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
+		3D52E64A25257B9900078F21 /* HomeController+UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UITableViewController.swift"; sourceTree = "<group>"; };
+		3D52E64D25257CD300078F21 /* HomeController+CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+CreateCompanyController.swift"; sourceTree = "<group>"; };
 		3D6C4DB12520F88B00314930 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		3D6C4DCB25218CD600314930 /* CompanyDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CompanyDataModel.xcdatamodel; sourceTree = "<group>"; };
 		3D6C4DD025218D5700314930 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -55,6 +59,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D52E65025257D4700078F21 /* HomeController */ = {
+			isa = PBXGroup;
+			children = (
+				3DD8C505251FCDC5007739F7 /* HomeController.swift */,
+				3D52E64A25257B9900078F21 /* HomeController+UITableViewController.swift */,
+				3D52E64D25257CD300078F21 /* HomeController+CreateCompanyController.swift */,
+			);
+			path = HomeController;
+			sourceTree = "<group>";
+		};
+		3D52E65125257D9E00078F21 /* UIExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				3DD8C520251FDB2C007739F7 /* UIColor.swift */,
+				3DD8C52A25203F7E007739F7 /* UIViewController.swift */,
+				3D6C4DB12520F88B00314930 /* UIView.swift */,
+			);
+			path = UIExtensions;
+			sourceTree = "<group>";
+		};
 		3D6C4DCF25218D4B00314930 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +108,7 @@
 			children = (
 				3D6C4DCF25218D4B00314930 /* Manager */,
 				3DD8C52325203861007739F7 /* Model */,
-				3DD8C51F251FDB1A007739F7 /* Extensions */,
+				3D52E65125257D9E00078F21 /* UIExtensions */,
 				3DD8C519251FD265007739F7 /* Views */,
 				3DD8C517251FD212007739F7 /* Controller */,
 				3DD8C507251FCDC5007739F7 /* Main.storyboard */,
@@ -100,7 +124,7 @@
 		3DD8C517251FD212007739F7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3DD8C505251FCDC5007739F7 /* HomeController.swift */,
+				3D52E65025257D4700078F21 /* HomeController */,
 				3DD8C52725203C0A007739F7 /* CreateCompanyController.swift */,
 			);
 			path = Controller;
@@ -113,16 +137,6 @@
 				3D52E6472525577400078F21 /* CompanyCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		3DD8C51F251FDB1A007739F7 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3DD8C520251FDB2C007739F7 /* UIColor.swift */,
-				3DD8C52A25203F7E007739F7 /* UIViewController.swift */,
-				3D6C4DB12520F88B00314930 /* UIView.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3DD8C52325203861007739F7 /* Model */ = {
@@ -214,6 +228,8 @@
 				3D52E6482525577400078F21 /* CompanyCell.swift in Sources */,
 				3D6C4DB22520F88B00314930 /* UIView.swift in Sources */,
 				3DD8C5252520386C007739F7 /* Company.swift in Sources */,
+				3D52E64E25257CD300078F21 /* HomeController+CreateCompanyController.swift in Sources */,
+				3D52E64B25257B9900078F21 /* HomeController+UITableViewController.swift in Sources */,
 				3D6C4DCC25218CD600314930 /* CompanyDataModel.xcdatamodeld in Sources */,
 				3D6C4DD125218D5700314930 /* CoreDataManager.swift in Sources */,
 			);
