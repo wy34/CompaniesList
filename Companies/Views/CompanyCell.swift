@@ -15,28 +15,27 @@ class CompanyCell: UITableViewCell {
         didSet {
             guard let company = company else { return }
             
-            //        guard let name = company.name, let founded = company.founded else { return UITableViewCell() }
-            //        let dateFormatter = DateFormatter()
-            //        dateFormatter.dateFormat = "MMM dd, yyyy"
-            //        let foundedDateString = dateFormatter.string(from: founded)
-            //        cell.backgroundColor = .tealColor
-            //        cell.textLabel?.text = "\(name) - Founded \(foundedDateString)"
-            //        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-            //        cell.textLabel?.textColor = .white
-            //
-            //        if let imageData = company.image {
-            //            cell.imageView?.image = UIImage(data: imageData)
-            //        } else {
-            //            cell.imageView?.image = #imageLiteral(resourceName: "select")
-            //        }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM dd, yyyy"
+            let foundedDateString = dateFormatter.string(from: company.founded!)
+
+            nameDateLabel.text = "\(company.name ?? "") - Founded \(foundedDateString)"
+
+            if let imageData = company.image {
+                profileImageView.image = UIImage(data: imageData)
+            } else {
+                profileImageView.image = #imageLiteral(resourceName: "select")
+            }
         }
     }
     
     private let profileImageView: UIImageView = {
         let iv = UIImageView(image: #imageLiteral(resourceName: "select"))
+        iv.contentMode = .scaleAspectFill
         iv.layer.cornerRadius = (UIScreen.main.bounds.width * 0.1) / 2
         iv.layer.borderWidth = 2
         iv.layer.borderColor = UIColor.darkBlue.cgColor
+        iv.clipsToBounds = true
         return iv
     }()
     
@@ -45,7 +44,7 @@ class CompanyCell: UITableViewCell {
         label.text = "Apple - Founded: Oct 27, 2017"
         label.numberOfLines = 1
         label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
