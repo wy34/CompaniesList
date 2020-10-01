@@ -34,7 +34,6 @@ class HomeController: UITableViewController {
         tableView.register(CompanyCell.self, forCellReuseIdentifier: CompanyCell.reuseId)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 60
-        tableView.allowsSelection = false
     }
     
     private func fetchCompanies() {
