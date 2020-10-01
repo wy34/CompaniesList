@@ -29,12 +29,6 @@ class CreateCompanyController: UIViewController {
     
     weak var delegate: CreateCompanyControllerDelegate?
     
-    private let nameBackgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightBlue
-        return view
-    }()
-    
     lazy var profileImage: UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "select")
@@ -88,11 +82,8 @@ class CreateCompanyController: UIViewController {
     
     private func configUI() {
         view.backgroundColor = .darkBlue
-        
-        view.addSubview(nameBackgroundView)
-        nameBackgroundView.anchor(top: view.topAnchor, right: view.rightAnchor, left: view.leftAnchor)
-        nameBackgroundView.setDimension(height: view.heightAnchor, hMult: 0.5)
-        
+    
+        let nameBackgroundView = setupNameBackgroundView(withHeightMultipleOf: 0.5)
         nameBackgroundView.addSubviews(profileImage, nameLabel, nameTextfield, datePicker)
         
         profileImage.center(to: nameBackgroundView, by: .centerX)

@@ -19,6 +19,7 @@ class CreateEmployeeController: UIViewController {
     func configNavBar() {
         setupNavBarStyle(withTitle: "Create Employee")
         setupCancleButtonInNavBar()
+        _ = setupNameBackgroundView(withHeightMultipleOf: 0.065)
     }
     
     func configUI() {

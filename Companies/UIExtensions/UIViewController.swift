@@ -35,4 +35,15 @@ extension UIViewController {
     @objc func handleCancel() {
         dismiss(animated: true, completion: nil)
     }
+    
+    func setupNameBackgroundView(withHeightMultipleOf mult: CGFloat) -> UIView {
+        let nameBackgroundView = UIView()
+        nameBackgroundView.backgroundColor = .lightBlue
+        
+        view.addSubview(nameBackgroundView)
+        nameBackgroundView.anchor(top: view.topAnchor, right: view.rightAnchor, left: view.leftAnchor)
+        nameBackgroundView.setDimension(height: view.heightAnchor, hMult: mult)
+        
+        return nameBackgroundView
+    }
 }
