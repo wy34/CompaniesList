@@ -11,11 +11,16 @@ class CreateEmployeeController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBarStyle(withTitle: "Create Employee")
+        configNavBar()
         configUI()
     }
     
     // MARK: - Helpers
+    func configNavBar() {
+        setupNavBarStyle(withTitle: "Create Employee")
+        setupCancleButtonInNavBar()
+    }
+    
     func configUI() {
         view.backgroundColor = .darkBlue
     }

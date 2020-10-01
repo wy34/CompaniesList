@@ -82,7 +82,7 @@ class CreateCompanyController: UIViewController {
     // MARK: - Helpers
     private func configNavBar() {
         setupNavBarStyle(withTitle: "Create Company")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        setupCancleButtonInNavBar()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     }
     
@@ -136,10 +136,6 @@ class CreateCompanyController: UIViewController {
     
     
     // MARK: - Selector
-    @objc func handleCancel() {
-        dismiss(animated: true, completion: nil)
-    }
-
     @objc func handleSave() {
         if companyToEdit != nil {
             updateCompany()
