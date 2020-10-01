@@ -25,11 +25,13 @@ class EmployeesController: UITableViewController {
     // MARK: - Helpers
     private func configUI() {
         view.backgroundColor = .darkBlue
-        setupAddButtonNavItem(withSelector: #selector(handleAdd))
+        setupAddButtonInNavBar(withSelector: #selector(handleAdd))
     }
     
     // MARK: - Selectors
     @objc private func handleAdd() {
-        print("Adding employee")
+        let createEmployeeController = CreateEmployeeController()
+        let navController = CustomNavigationController(rootViewController: createEmployeeController)
+        present(navController, animated: true, completion: nil)
     }
 }

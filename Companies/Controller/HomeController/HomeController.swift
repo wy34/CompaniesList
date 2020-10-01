@@ -24,7 +24,7 @@ class HomeController: UITableViewController {
     // MARK: - Helpers
     private func configureNavBar() {
         setupNavBarStyle(withTitle: "Companies")
-        setupAddButtonNavItem(withSelector: #selector(handleAddCompany))
+        setupAddButtonInNavBar(withSelector: #selector(handleAddCompany))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
     }
     
@@ -49,7 +49,6 @@ class HomeController: UITableViewController {
         }
         
         let navController = CustomNavigationController(rootViewController: createCompanyController)
-        navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true)
     }
     

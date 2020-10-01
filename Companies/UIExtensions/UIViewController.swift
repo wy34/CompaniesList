@@ -24,7 +24,7 @@ extension UIViewController {
         navigationController?.navigationBar.tintColor = .white
     }
     
-    func setupAddButtonNavItem(withSelector selector: Selector) {
+    func setupAddButtonInNavBar(withSelector selector: Selector) {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: selector)
     }
 }
