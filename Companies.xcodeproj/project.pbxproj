@@ -10,6 +10,7 @@
 		3D52E6482525577400078F21 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E6472525577400078F21 /* CompanyCell.swift */; };
 		3D52E64B25257B9900078F21 /* HomeController+UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E64A25257B9900078F21 /* HomeController+UITableViewController.swift */; };
 		3D52E64E25257CD300078F21 /* HomeController+CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E64D25257CD300078F21 /* HomeController+CreateCompanyController.swift */; };
+		3D52E65625257EDC00078F21 /* CreateCompanyController+UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E65525257EDC00078F21 /* CreateCompanyController+UIImagePickerController.swift */; };
 		3D6C4DB22520F88B00314930 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C4DB12520F88B00314930 /* UIView.swift */; };
 		3D6C4DCC25218CD600314930 /* CompanyDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C4DCA25218CD600314930 /* CompanyDataModel.xcdatamodeld */; };
 		3D6C4DD125218D5700314930 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C4DD025218D5700314930 /* CoreDataManager.swift */; };
@@ -30,6 +31,7 @@
 		3D52E6472525577400078F21 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		3D52E64A25257B9900078F21 /* HomeController+UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UITableViewController.swift"; sourceTree = "<group>"; };
 		3D52E64D25257CD300078F21 /* HomeController+CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+CreateCompanyController.swift"; sourceTree = "<group>"; };
+		3D52E65525257EDC00078F21 /* CreateCompanyController+UIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateCompanyController+UIImagePickerController.swift"; sourceTree = "<group>"; };
 		3D6C4DB12520F88B00314930 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		3D6C4DCB25218CD600314930 /* CompanyDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CompanyDataModel.xcdatamodel; sourceTree = "<group>"; };
 		3D6C4DD025218D5700314930 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -79,6 +81,15 @@
 			path = UIExtensions;
 			sourceTree = "<group>";
 		};
+		3D52E65325257EBA00078F21 /* CreateCompanyController */ = {
+			isa = PBXGroup;
+			children = (
+				3DD8C52725203C0A007739F7 /* CreateCompanyController.swift */,
+				3D52E65525257EDC00078F21 /* CreateCompanyController+UIImagePickerController.swift */,
+			);
+			path = CreateCompanyController;
+			sourceTree = "<group>";
+		};
 		3D6C4DCF25218D4B00314930 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				3D52E65025257D4700078F21 /* HomeController */,
-				3DD8C52725203C0A007739F7 /* CreateCompanyController.swift */,
+				3D52E65325257EBA00078F21 /* CreateCompanyController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,6 +232,7 @@
 				3DD8C52B25203F7E007739F7 /* UIViewController.swift in Sources */,
 				3DD8C51B251FD280007739F7 /* CustomNavigationController.swift in Sources */,
 				3DD8C506251FCDC5007739F7 /* HomeController.swift in Sources */,
+				3D52E65625257EDC00078F21 /* CreateCompanyController+UIImagePickerController.swift in Sources */,
 				3DD8C502251FCDC5007739F7 /* AppDelegate.swift in Sources */,
 				3DD8C52825203C0A007739F7 /* CreateCompanyController.swift in Sources */,
 				3DD8C504251FCDC5007739F7 /* SceneDelegate.swift in Sources */,

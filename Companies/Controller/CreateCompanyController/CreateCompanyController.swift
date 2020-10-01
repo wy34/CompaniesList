@@ -35,7 +35,7 @@ class CreateCompanyController: UIViewController {
         return view
     }()
     
-    private lazy var profileImage: UIImageView = {
+    lazy var profileImage: UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "select")
         iv.isUserInteractionEnabled = true
@@ -153,14 +153,5 @@ class CreateCompanyController: UIViewController {
         picker.delegate = self
         picker.allowsEditing = true
         present(picker, animated: true)
-    }
-}
-
-// MARK: - UIImagePickerControllerDelegate
-extension CreateCompanyController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        profileImage.image = selectedImage
-        dismiss(animated: true, completion: nil)
     }
 }
