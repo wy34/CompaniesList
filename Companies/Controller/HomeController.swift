@@ -31,8 +31,9 @@ class HomeController: UITableViewController {
     private func configureTableView() {
         tableView.backgroundColor = .darkBlue
         tableView.separatorColor = .white
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(CompanyCell.self, forCellReuseIdentifier: CompanyCell.reuseId)
         tableView.tableFooterView = UIView()
+        tableView.rowHeight = 60
     }
     
     private func fetchCompanies() {
@@ -83,23 +84,9 @@ extension HomeController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CompanyCell.reuseId, for: indexPath) as! CompanyCell
         let company = companies[indexPath.row]
-        guard let name = company.name, let founded = company.founded else { return UITableViewCell() }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd, yyyy"
-        let foundedDateString = dateFormatter.string(from: founded)
-        cell.backgroundColor = .tealColor
-        cell.textLabel?.text = "\(name) - Founded \(foundedDateString)"
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        cell.textLabel?.textColor = .white
-        
-        if let imageData = company.image {
-            cell.imageView?.image = UIImage(data: imageData)
-        } else {
-            cell.imageView?.image = #imageLiteral(resourceName: "select")
-        }
-        
+        cell.company = company
         return cell
     }
 
