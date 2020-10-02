@@ -23,7 +23,7 @@ class CreateEmployeeController: UIViewController {
     func configNavBar() {
         setupNavBarStyle(withTitle: "Create Employee")
         setupCancleButtonInNavBar()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
+        setupSaveButtonInNavBar(withSelector: #selector(handleSave))
     }
     
     func configUI() {
@@ -47,7 +47,7 @@ class CreateEmployeeController: UIViewController {
         let error = CoreDataManager.shared.createEmployee(withName: employeeName)
         
         if let error = error {
-            
+            print(error.localizedDescription)
         } else {
             dismiss(animated: true, completion: nil)
         }

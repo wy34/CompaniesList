@@ -68,7 +68,7 @@ class CreateCompanyController: UIViewController {
     private func configNavBar() {
         setupNavBarStyle(withTitle: "Create Company")
         setupCancleButtonInNavBar()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
+        setupSaveButtonInNavBar(withSelector: #selector(handleSave))
     }
     
     private func configUI() {

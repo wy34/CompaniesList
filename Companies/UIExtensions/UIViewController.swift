@@ -28,6 +28,10 @@ extension UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: selector)
     }
     
+    func setupSaveButtonInNavBar(withSelector selector: Selector) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: selector)
+    }
+    
     func setupCancleButtonInNavBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
     }
