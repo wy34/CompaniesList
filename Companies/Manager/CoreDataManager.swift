@@ -59,9 +59,10 @@ struct CoreDataManager {
         }
     }
     
-    func createEmployee(withName name: String) -> (Employee?, Error?) {
+    func createEmployee(withName name: String, andCompany company: Company) -> (Employee?, Error?) {
         let employee = NSEntityDescription.insertNewObject(forEntityName: "Employee", into: persistentContainer.viewContext)
         employee.setValue(name, forKey: "name")
+        employee.setValue(company, forKey: "company")
         
         do {
             try persistentContainer.viewContext.save()
@@ -72,14 +73,14 @@ struct CoreDataManager {
         }
     }
     
-    func fetchEmployees() -> [Employee] {
-        let request: NSFetchRequest<Employee> = Employee.fetchRequest()
-        
-        do {
-            return try persistentContainer.viewContext.fetch(request)
-        } catch let err {
-            print(err.localizedDescription)
-            return []
-        }
-    }
+//    func fetchEmployees(forCompany company: Company) -> [Employee]? {
+//        let request: NSFetchRequest<Employee> = Employee.fetchRequest()
+//
+//        do {
+//            return try persistentContainer.viewContext.fetch(request)
+//        } catch let err {
+//            print(err.localizedDescription)
+//            return []
+//        }
+//    }
 }

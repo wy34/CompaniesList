@@ -14,6 +14,7 @@ protocol CreateEmployeeControllerDelegate: class {
 class CreateEmployeeController: UIViewController {
     // MARK: - Properties
     weak var delegate: CreateEmployeeControllerDelegate?
+    var company: Company?
     
     private let nameLabel = UILabel.createBasicLabel(withText: "Name")
     private let nameTextfield = UITextField.createBasicTextField(withPlaceholder: "Enter name")
@@ -50,7 +51,8 @@ class CreateEmployeeController: UIViewController {
     // MARK: - Selectors
     @objc func handleSave() {
         guard let employeeName = nameTextfield.text, !employeeName.isEmpty else { return }
-        let tuple = CoreDataManager.shared.createEmployee(withName: employeeName)
+        guard let company = company else { return }
+        let tuple = CoreDataManager.shared.createEmployee(withName: employeeName, andCompany: company)
         
         if let error = tuple.1 {
             print(error.localizedDescription)

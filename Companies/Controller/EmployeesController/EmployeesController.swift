@@ -33,13 +33,15 @@ class EmployeesController: UITableViewController {
     }
     
     private func fetchEmployees() {
-        employees = CoreDataManager.shared.fetchEmployees()
+        guard let company = company, let employees = company.employees?.allObjects as? [Employee] else { return }
+        self.employees = employees
     }
     
     // MARK: - Selectors
     @objc private func handleAdd() {
         let createEmployeeController = CreateEmployeeController()
         createEmployeeController.delegate = self
+        createEmployeeController.company = company
         let navController = CustomNavigationController(rootViewController: createEmployeeController)
         present(navController, animated: true, completion: nil)
     }
