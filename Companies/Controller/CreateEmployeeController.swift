@@ -58,11 +58,30 @@ class CreateEmployeeController: UIViewController {
         birthdayTextfield.center(to: nameBackGroundView, by: .centerX, withMultiplierOf: 1.25)
     }
     
+    func showErrorAlert() {
+        let alert = UIAlertController(title: "Bad Date", message: "Birthday date entered not valid", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func cofigureBirthdate() -> Date? {
+        guard let date = birthdayTextfield.text else { return nil }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        if let formattedDate = dateFormatter.date(from: date) {
+            return formattedDate
+        } else {
+            showErrorAlert()
+            return nil
+        }
+    }
+    
     // MARK: - Selectors
     @objc func handleSave() {
         guard let employeeName = nameTextfield.text, !employeeName.isEmpty else { return }
         guard let company = company else { return }
-        let tuple = CoreDataManager.shared.createEmployee(withName: employeeName, andCompany: company)
+        guard let birthDate = cofigureBirthdate() else { return }
+        let tuple = CoreDataManager.shared.createEmployee(withName: employeeName, birthdate: birthDate, andCompany: company)
         
         if let error = tuple.1 {
             print(error.localizedDescription)
