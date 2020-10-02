@@ -23,6 +23,7 @@ class CreateEmployeeController: UIViewController {
     func configNavBar() {
         setupNavBarStyle(withTitle: "Create Employee")
         setupCancleButtonInNavBar()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     }
     
     func configUI() {
@@ -38,5 +39,17 @@ class CreateEmployeeController: UIViewController {
         nameTextfield.center(to: nameLabel, by: .centerY)
         nameTextfield.setDimension(width: nameBackGroundView.widthAnchor, wMult: 0.68)
         nameTextfield.center(to: nameBackGroundView, by: .centerX, withMultiplierOf: 1.25)
+    }
+    
+    // MARK: - Selectors
+    @objc func handleSave() {
+        guard let employeeName = nameTextfield.text, !employeeName.isEmpty else { return }
+        let error = CoreDataManager.shared.createEmployee(withName: employeeName)
+        
+        if let error = error {
+            
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
 }

@@ -58,4 +58,17 @@ struct CoreDataManager {
             print(deleteError.localizedDescription)
         }
     }
+    
+    func createEmployee(withName name: String) -> Error? {
+        let employee = NSEntityDescription.insertNewObject(forEntityName: "Employee", into: persistentContainer.viewContext)
+        employee.setValue(name, forKey: "name")
+        
+        do {
+            try persistentContainer.viewContext.save()
+            return nil
+        } catch let err {
+            print(err.localizedDescription)
+            return err
+        }
+    }
 }
