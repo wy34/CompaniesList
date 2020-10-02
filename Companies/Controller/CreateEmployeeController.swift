@@ -54,9 +54,9 @@ class CreateEmployeeController: UIViewController {
         
         if let error = tuple.1 {
             print(error.localizedDescription)
-        } else {
+        } else if let employee = tuple.0 {
             dismiss(animated: true) {
-                self.delegate?.didAddEmployee(employee: tuple.0!)
+                self.delegate?.didAddEmployee(employee: employee)
             }
         }
     }
