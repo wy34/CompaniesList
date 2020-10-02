@@ -71,4 +71,15 @@ struct CoreDataManager {
             return err
         }
     }
+    
+    func fetchEmployees() -> [Employee] {
+        let request: NSFetchRequest<Employee> = Employee.fetchRequest()
+        
+        do {
+            return try persistentContainer.viewContext.fetch(request)
+        } catch let err {
+            print(err.localizedDescription)
+            return []
+        }
+    }
 }

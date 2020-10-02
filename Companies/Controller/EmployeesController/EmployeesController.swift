@@ -15,17 +15,25 @@ class EmployeesController: UITableViewController {
             title = company.name
         }
     }
+    
+    var employees = [Employee]()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
+        fetchEmployees()
+        configureTableView(withCellClass: UITableViewCell.self, andReuseId: "cell")
     }
     
     // MARK: - Helpers
     private func configUI() {
         view.backgroundColor = .darkBlue
         setupAddButtonInNavBar(withSelector: #selector(handleAdd))
+    }
+    
+    private func fetchEmployees() {
+        employees = CoreDataManager.shared.fetchEmployees()
     }
     
     // MARK: - Selectors

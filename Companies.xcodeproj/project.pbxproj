@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3D183C9E2526A83700943565 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D183C9D2526A83700943565 /* UILabel.swift */; };
 		3D183CA12526A89A00943565 /* UITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D183CA02526A89A00943565 /* UITextfield.swift */; };
+		3D183CA62526C80C00943565 /* EmployeesController+UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D183CA52526C80C00943565 /* EmployeesController+UITableViewController.swift */; };
+		3D183CA92526C89400943565 /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D183CA82526C89400943565 /* UITableViewController.swift */; };
 		3D52E6482525577400078F21 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E6472525577400078F21 /* CompanyCell.swift */; };
 		3D52E64B25257B9900078F21 /* HomeController+UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E64A25257B9900078F21 /* HomeController+UITableViewController.swift */; };
 		3D52E64E25257CD300078F21 /* HomeController+CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E64D25257CD300078F21 /* HomeController+CreateCompanyController.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		3D183C9D2526A83700943565 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		3D183CA02526A89A00943565 /* UITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextfield.swift; sourceTree = "<group>"; };
+		3D183CA52526C80C00943565 /* EmployeesController+UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmployeesController+UITableViewController.swift"; sourceTree = "<group>"; };
+		3D183CA82526C89400943565 /* UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
 		3D52E6472525577400078F21 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		3D52E64A25257B9900078F21 /* HomeController+UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UITableViewController.swift"; sourceTree = "<group>"; };
 		3D52E64D25257CD300078F21 /* HomeController+CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+CreateCompanyController.swift"; sourceTree = "<group>"; };
@@ -69,6 +73,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D183CA32526C7F400943565 /* EmployeesController */ = {
+			isa = PBXGroup;
+			children = (
+				3D52E6582525808200078F21 /* EmployeesController.swift */,
+				3D183CA52526C80C00943565 /* EmployeesController+UITableViewController.swift */,
+			);
+			path = EmployeesController;
+			sourceTree = "<group>";
+		};
 		3D52E65025257D4700078F21 /* HomeController */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +100,7 @@
 				3D6C4DB12520F88B00314930 /* UIView.swift */,
 				3D183C9D2526A83700943565 /* UILabel.swift */,
 				3D183CA02526A89A00943565 /* UITextfield.swift */,
+				3D183CA82526C89400943565 /* UITableViewController.swift */,
 			);
 			path = UIExtensions;
 			sourceTree = "<group>";
@@ -147,7 +161,7 @@
 			children = (
 				3D52E65025257D4700078F21 /* HomeController */,
 				3D52E65325257EBA00078F21 /* CreateCompanyController */,
-				3D52E6582525808200078F21 /* EmployeesController.swift */,
+				3D183CA32526C7F400943565 /* EmployeesController */,
 				3D52E65B252585EF00078F21 /* CreateEmployeeController.swift */,
 			);
 			path = Controller;
@@ -241,11 +255,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D183CA92526C89400943565 /* UITableViewController.swift in Sources */,
 				3DD8C52B25203F7E007739F7 /* UIViewController.swift in Sources */,
 				3DD8C51B251FD280007739F7 /* CustomNavigationController.swift in Sources */,
 				3DD8C506251FCDC5007739F7 /* HomeController.swift in Sources */,
 				3D52E65625257EDC00078F21 /* CreateCompanyController+UIImagePickerController.swift in Sources */,
 				3D183C9E2526A83700943565 /* UILabel.swift in Sources */,
+				3D183CA62526C80C00943565 /* EmployeesController+UITableViewController.swift in Sources */,
 				3DD8C502251FCDC5007739F7 /* AppDelegate.swift in Sources */,
 				3DD8C52825203C0A007739F7 /* CreateCompanyController.swift in Sources */,
 				3D52E65C252585EF00078F21 /* CreateEmployeeController.swift in Sources */,

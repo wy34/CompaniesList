@@ -16,7 +16,7 @@ class HomeController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
-        configureTableView()
+        configureTableView(withCellClass: CompanyCell.self, andReuseId: CompanyCell.reuseId)
         fetchCompanies()
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
@@ -26,14 +26,6 @@ class HomeController: UITableViewController {
         setupNavBarStyle(withTitle: "Companies")
         setupAddButtonInNavBar(withSelector: #selector(handleAddCompany))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
-    }
-    
-    private func configureTableView() {
-        tableView.backgroundColor = .darkBlue
-        tableView.separatorColor = .white
-        tableView.register(CompanyCell.self, forCellReuseIdentifier: CompanyCell.reuseId)
-        tableView.tableFooterView = UIView()
-        tableView.rowHeight = 60
     }
     
     private func fetchCompanies() {
