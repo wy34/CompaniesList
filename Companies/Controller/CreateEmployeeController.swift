@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol CreateEmployeeControllerDelegate: class {
+    func didAddEmployee(employee: Employee)
+}
+
 class CreateEmployeeController: UIViewController {
     // MARK: - Properties
+    weak var delegate: CreateEmployeeControllerDelegate?
+    
     private let nameLabel = UILabel.createBasicLabel(withText: "Name")
     private let nameTextfield = UITextField.createBasicTextField(withPlaceholder: "Enter name")
     
@@ -44,12 +50,14 @@ class CreateEmployeeController: UIViewController {
     // MARK: - Selectors
     @objc func handleSave() {
         guard let employeeName = nameTextfield.text, !employeeName.isEmpty else { return }
-        let error = CoreDataManager.shared.createEmployee(withName: employeeName)
+        let tuple = CoreDataManager.shared.createEmployee(withName: employeeName)
         
-        if let error = error {
+        if let error = tuple.1 {
             print(error.localizedDescription)
         } else {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true) {
+                self.delegate?.didAddEmployee(employee: tuple.0!)
+            }
         }
     }
 }

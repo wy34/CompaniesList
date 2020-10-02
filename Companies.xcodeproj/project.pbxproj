@@ -11,6 +11,7 @@
 		3D183CA12526A89A00943565 /* UITextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D183CA02526A89A00943565 /* UITextfield.swift */; };
 		3D183CA62526C80C00943565 /* EmployeesController+UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D183CA52526C80C00943565 /* EmployeesController+UITableViewController.swift */; };
 		3D183CA92526C89400943565 /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D183CA82526C89400943565 /* UITableViewController.swift */; };
+		3D183CAC2526CDAF00943565 /* EmployeeController+CreateEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D183CAB2526CDAF00943565 /* EmployeeController+CreateEmployeeController.swift */; };
 		3D52E6482525577400078F21 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E6472525577400078F21 /* CompanyCell.swift */; };
 		3D52E64B25257B9900078F21 /* HomeController+UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E64A25257B9900078F21 /* HomeController+UITableViewController.swift */; };
 		3D52E64E25257CD300078F21 /* HomeController+CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52E64D25257CD300078F21 /* HomeController+CreateCompanyController.swift */; };
@@ -38,6 +39,7 @@
 		3D183CA02526A89A00943565 /* UITextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextfield.swift; sourceTree = "<group>"; };
 		3D183CA52526C80C00943565 /* EmployeesController+UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmployeesController+UITableViewController.swift"; sourceTree = "<group>"; };
 		3D183CA82526C89400943565 /* UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
+		3D183CAB2526CDAF00943565 /* EmployeeController+CreateEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmployeeController+CreateEmployeeController.swift"; sourceTree = "<group>"; };
 		3D52E6472525577400078F21 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		3D52E64A25257B9900078F21 /* HomeController+UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UITableViewController.swift"; sourceTree = "<group>"; };
 		3D52E64D25257CD300078F21 /* HomeController+CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+CreateCompanyController.swift"; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				3D52E6582525808200078F21 /* EmployeesController.swift */,
 				3D183CA52526C80C00943565 /* EmployeesController+UITableViewController.swift */,
+				3D183CAB2526CDAF00943565 /* EmployeeController+CreateEmployeeController.swift */,
 			);
 			path = EmployeesController;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				3DD8C52825203C0A007739F7 /* CreateCompanyController.swift in Sources */,
 				3D52E65C252585EF00078F21 /* CreateEmployeeController.swift in Sources */,
 				3DD8C504251FCDC5007739F7 /* SceneDelegate.swift in Sources */,
+				3D183CAC2526CDAF00943565 /* EmployeeController+CreateEmployeeController.swift in Sources */,
 				3DD8C521251FDB2C007739F7 /* UIColor.swift in Sources */,
 				3D52E6482525577400078F21 /* CompanyCell.swift in Sources */,
 				3D6C4DB22520F88B00314930 /* UIView.swift in Sources */,

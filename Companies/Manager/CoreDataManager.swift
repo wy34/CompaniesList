@@ -59,16 +59,16 @@ struct CoreDataManager {
         }
     }
     
-    func createEmployee(withName name: String) -> Error? {
+    func createEmployee(withName name: String) -> (Employee?, Error?) {
         let employee = NSEntityDescription.insertNewObject(forEntityName: "Employee", into: persistentContainer.viewContext)
         employee.setValue(name, forKey: "name")
         
         do {
             try persistentContainer.viewContext.save()
-            return nil
+            return (employee as? Employee, nil)
         } catch let err {
             print(err.localizedDescription)
-            return err
+            return (nil, err)
         }
     }
     

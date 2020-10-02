@@ -39,6 +39,7 @@ class EmployeesController: UITableViewController {
     // MARK: - Selectors
     @objc private func handleAdd() {
         let createEmployeeController = CreateEmployeeController()
+        createEmployeeController.delegate = self
         let navController = CustomNavigationController(rootViewController: createEmployeeController)
         present(navController, animated: true, completion: nil)
     }
