@@ -42,17 +42,8 @@ class CreateCompanyController: UIViewController {
         return iv
     }()
     
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Name"
-        return label
-    }()
-    
-    private let nameTextfield: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Enter name"
-        return tf
-    }()
+    private let nameLabel = UILabel.createBasicLabel(withText: "Name")
+    private let nameTextfield = UITextField.createBasicTextField(withPlaceholder: "Enter name")
     
     private let datePicker: UIDatePicker = {
         let dp = UIDatePicker()
