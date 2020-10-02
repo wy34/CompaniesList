@@ -18,6 +18,8 @@ class CreateEmployeeController: UIViewController {
     
     private let nameLabel = UILabel.createBasicLabel(withText: "Name")
     private let nameTextfield = UITextField.createBasicTextField(withPlaceholder: "Enter name")
+    private let birthdayLabel = UILabel.createBasicLabel(withText: "Birthday")
+    private let birthdayTextfield = UITextField.createBasicTextField(withPlaceholder: "MM/dd/yyyy")
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,16 +38,24 @@ class CreateEmployeeController: UIViewController {
     func configUI() {
         view.backgroundColor = .darkBlue
         
-        let nameBackGroundView = setupNameBackgroundView(withHeightMultipleOf: 0.065)
-        view.addSubviews(nameLabel, nameTextfield)
+        let nameBackGroundView = setupNameBackgroundView(withHeightMultipleOf: 0.065 * 2)
+        view.addSubviews(nameLabel, nameTextfield, birthdayLabel, birthdayTextfield)
         
-        nameLabel.setDimension(height: nameBackGroundView.heightAnchor, hMult: 0.3)
+        nameLabel.setDimension(height: nameBackGroundView.heightAnchor, hMult: 0.5)
         nameLabel.center(to: nameBackGroundView, by: .centerX, withMultiplierOf: 0.18)
-        nameLabel.center(to: nameBackGroundView, by: .centerY)
+        nameLabel.anchor(top: nameBackGroundView.topAnchor)
         
         nameTextfield.center(to: nameLabel, by: .centerY)
         nameTextfield.setDimension(width: nameBackGroundView.widthAnchor, wMult: 0.68)
         nameTextfield.center(to: nameBackGroundView, by: .centerX, withMultiplierOf: 1.25)
+        
+        birthdayLabel.setDimension(height: nameBackGroundView.heightAnchor, hMult: 0.5)
+        birthdayLabel.anchor(left: nameLabel.leftAnchor)
+        birthdayLabel.anchor(top: nameLabel.bottomAnchor)
+        
+        birthdayTextfield.center(to: birthdayLabel, by: .centerY)
+        birthdayTextfield.setDimension(width: nameBackGroundView.widthAnchor, wMult: 0.68)
+        birthdayTextfield.center(to: nameBackGroundView, by: .centerX, withMultiplierOf: 1.25)
     }
     
     // MARK: - Selectors
