@@ -9,9 +9,15 @@
     <entity name="Employee" representedClassName="Employee" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="employees" inverseEntity="Company"/>
+        <relationship name="employeeInformation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmployeeInformation" inverseName="employee" inverseEntity="EmployeeInformation"/>
+    </entity>
+    <entity name="EmployeeInformation" representedClassName="EmployeeInformation" syncable="YES" codeGenerationType="class">
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="employee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employee" inverseName="employeeInformation" inverseEntity="Employee"/>
     </entity>
     <elements>
         <element name="Company" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Employee" positionX="-63" positionY="9" width="128" height="73"/>
+        <element name="Employee" positionX="-63" positionY="9" width="128" height="88"/>
+        <element name="EmployeeInformation" positionX="-54" positionY="18" width="128" height="73"/>
     </elements>
 </model>
