@@ -35,7 +35,7 @@ class EmployeesController: UITableViewController {
         setupAddButtonInNavBar(withSelector: #selector(handleAdd))
     }
     
-    private func fetchEmployees() {
+    func fetchEmployees() {
         guard let company = company, let employees = company.employees?.allObjects as? [Employee] else { return }
         
         shortNameEmployees = employees.filter {

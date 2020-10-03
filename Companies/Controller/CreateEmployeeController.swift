@@ -46,7 +46,7 @@ class CreateEmployeeController: UIViewController {
     func configUI() {
         view.backgroundColor = .darkBlue
         
-        let nameBackGroundView = setupNameBackgroundView(withHeightMultipleOf: 0.065 * 3)
+        let nameBackGroundView = setupNameBackgroundView(withHeightMultipleOf: 0.07 * 3)
         view.addSubviews(nameLabel, nameTextfield, birthdayLabel, birthdayTextfield, employeeTypeSegmentedControll)
         
         nameLabel.setDimension(height: nameBackGroundView.heightAnchor, hMult: 0.333)

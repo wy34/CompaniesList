@@ -19,11 +19,11 @@ extension EmployeesController {
         label.font = UIFont.boldSystemFont(ofSize: 16)
         
         if section == 0 {
-            label.text = "Short Names"
+            label.text = "Executive"
         } else if section == 1 {
-            label.text = "Long Names"
+            label.text = "Senior Management"
         } else {
-            label.text = "Really Long Names"
+            label.text = "Staff"
         }
         
         return label
