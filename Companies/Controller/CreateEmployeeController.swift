@@ -22,7 +22,7 @@ class CreateEmployeeController: UIViewController {
     private let birthdayTextfield = UITextField.createBasicTextField(withPlaceholder: "mm/dd/yyyy")
     
     private let employeeTypeSegmentedControll: UISegmentedControl = {
-        let types = ["Executive", "Senior Managment", "Staff"]
+        let types = [EmployeeType.Executive.rawValue, EmployeeType.SeniorManagement.rawValue, EmployeeType.Staff.rawValue]
         let sc = UISegmentedControl(items: types)
         sc.selectedSegmentIndex = 0
         sc.tintColor = .darkBlue

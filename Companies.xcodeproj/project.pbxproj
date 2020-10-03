@@ -33,6 +33,7 @@
 		3DD8C52825203C0A007739F7 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C52725203C0A007739F7 /* CreateCompanyController.swift */; };
 		3DD8C52B25203F7E007739F7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C52A25203F7E007739F7 /* UIViewController.swift */; };
 		3DF6EFD325282273003D1254 /* IndentedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF6EFD225282273003D1254 /* IndentedLabel.swift */; };
+		3DF6EFF225290DB7003D1254 /* EmployeeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF6EFF125290DB7003D1254 /* EmployeeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		3DD8C52725203C0A007739F7 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
 		3DD8C52A25203F7E007739F7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		3DF6EFD225282273003D1254 /* IndentedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndentedLabel.swift; sourceTree = "<group>"; };
+		3DF6EFF125290DB7003D1254 /* EmployeeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			children = (
 				3D6C4DCA25218CD600314930 /* CompanyDataModel.xcdatamodeld */,
 				3DD8C5242520386C007739F7 /* Company.swift */,
+				3DF6EFF125290DB7003D1254 /* EmployeeType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				3D52E65625257EDC00078F21 /* CreateCompanyController+UIImagePickerController.swift in Sources */,
 				3D183C9E2526A83700943565 /* UILabel.swift in Sources */,
 				3D183CA62526C80C00943565 /* EmployeesController+UITableViewController.swift in Sources */,
+				3DF6EFF225290DB7003D1254 /* EmployeeType.swift in Sources */,
 				3DD8C502251FCDC5007739F7 /* AppDelegate.swift in Sources */,
 				3DD8C52825203C0A007739F7 /* CreateCompanyController.swift in Sources */,
 				3D52E65C252585EF00078F21 /* CreateEmployeeController.swift in Sources */,

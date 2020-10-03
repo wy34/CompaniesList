@@ -16,9 +16,6 @@ class EmployeesController: UITableViewController {
         }
     }
     
-    var shortNameEmployees = [Employee]()
-    var longNameEmployees = [Employee]()
-    var reallyLongNameEmployees = [Employee]()
     var allEmployees = [[Employee]]()
     
     // MARK: - Lifecycle
@@ -37,29 +34,11 @@ class EmployeesController: UITableViewController {
     
     func fetchEmployees() {
         guard let company = company, let employees = company.employees?.allObjects as? [Employee] else { return }
-        
-        shortNameEmployees = employees.filter {
-            if let name = $0.name {
-                return name.count < 6
-            }
-            return false
-        }
-        
-        longNameEmployees = employees.filter {
-            if let name = $0.name {
-                return name.count > 6 && name.count < 9
-            }
-            return false
-        }
-        
-        reallyLongNameEmployees = employees.filter {
-            if let name = $0.name {
-                return name.count > 9
-            }
-            return false
-        }
-        
-        allEmployees = [shortNameEmployees, longNameEmployees, reallyLongNameEmployees]
+
+        let executive = employees.filter {$0.type == EmployeeType.Executive.rawValue}
+        let seniorManagement = employees.filter {$0.type == EmployeeType.SeniorManagement.rawValue}
+        let staff = employees.filter {$0.type == EmployeeType.Staff.rawValue}
+        allEmployees = [executive, seniorManagement, staff]
     }
     
     func stringifyDate(_ date: Date) -> String {

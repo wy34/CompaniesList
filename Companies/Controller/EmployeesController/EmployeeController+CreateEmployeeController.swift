@@ -9,7 +9,6 @@ import UIKit
 
 extension EmployeesController: CreateEmployeeControllerDelegate {
     func didAddEmployee(employee: Employee) {
-//        tableView.insertRows(at: [IndexPath(row: employees.count - 1, section: 0)], with: .automatic)
         fetchEmployees()
         tableView.reloadData()
     }
