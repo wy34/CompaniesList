@@ -22,8 +22,10 @@ class CreateEmployeeController: UIViewController {
     private let birthdayTextfield = UITextField.createBasicTextField(withPlaceholder: "mm/dd/yyyy")
     
     private let employeeTypeSegmentedControll: UISegmentedControl = {
-        let types = ["1", "2", "3"]
+        let types = ["Executive", "Senior Managment", "Staff"]
         let sc = UISegmentedControl(items: types)
+        sc.selectedSegmentIndex = 0
+        sc.tintColor = .darkBlue
         return sc
     }()
     
@@ -48,22 +50,21 @@ class CreateEmployeeController: UIViewController {
         view.addSubviews(nameLabel, nameTextfield, birthdayLabel, birthdayTextfield, employeeTypeSegmentedControll)
         
         nameLabel.setDimension(height: nameBackGroundView.heightAnchor, hMult: 0.333)
-        nameLabel.center(to: nameBackGroundView, by: .centerX, withMultiplierOf: 0.18)
+        nameLabel.anchor(left: nameBackGroundView.leftAnchor, paddingLeft: 20)
         nameLabel.anchor(top: nameBackGroundView.topAnchor)
         
         nameTextfield.center(to: nameLabel, by: .centerY)
         nameTextfield.setDimension(width: nameBackGroundView.widthAnchor, wMult: 0.68)
-        nameTextfield.center(to: nameBackGroundView, by: .centerX, withMultiplierOf: 1.25)
+        nameTextfield.anchor(right: nameBackGroundView.rightAnchor, paddingRight: 25)
         
         birthdayLabel.setDimension(height: nameBackGroundView.heightAnchor, hMult: 0.333)
         birthdayLabel.anchor(left: nameLabel.leftAnchor)
         birthdayLabel.anchor(top: nameLabel.bottomAnchor)
         
         birthdayTextfield.center(to: birthdayLabel, by: .centerY)
-        birthdayTextfield.setDimension(width: nameBackGroundView.widthAnchor, wMult: 0.68)
-        birthdayTextfield.center(to: nameBackGroundView, by: .centerX, withMultiplierOf: 1.25)
+        birthdayTextfield.setDimension(width: nameTextfield.widthAnchor)
+        birthdayTextfield.anchor(right: nameTextfield.rightAnchor)
         
-        employeeTypeSegmentedControll.setDimension(height: nameBackGroundView.heightAnchor, hMult: 0.25)
         employeeTypeSegmentedControll.anchor(top: birthdayLabel.bottomAnchor, right: birthdayTextfield.rightAnchor, left: birthdayLabel.leftAnchor)
     }
     
@@ -93,7 +94,8 @@ class CreateEmployeeController: UIViewController {
         }
         guard let company = company else { return }
         guard let birthDate = cofigureBirthdate() else { return }
-        let tuple = CoreDataManager.shared.createEmployee(withName: employeeName, birthdate: birthDate, andCompany: company)
+        guard let type = employeeTypeSegmentedControll.titleForSegment(at: employeeTypeSegmentedControll.selectedSegmentIndex) else { return }
+        let tuple = CoreDataManager.shared.createEmployee(withName: employeeName, birthdate: birthDate, type: type, andCompany: company)
         
         if let error = tuple.1 {
             print(error.localizedDescription)
