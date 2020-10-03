@@ -13,7 +13,7 @@ extension EmployeesController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
+        let label = IndentedLabel()
         label.backgroundColor = .lightBlue
         label.textColor = .darkBlue
         label.font = UIFont.boldSystemFont(ofSize: 16)
@@ -47,3 +47,4 @@ extension EmployeesController {
         return cell
     }
 }
+
