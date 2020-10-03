@@ -16,8 +16,11 @@ class EmployeesController: UITableViewController {
         }
     }
     
-    var employees = [Employee]()
-
+    var shortNameEmployees = [Employee]()
+    var longNameEmployees = [Employee]()
+    var reallyLongNameEmployees = [Employee]()
+    var allEmployees = [[Employee]]()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +37,29 @@ class EmployeesController: UITableViewController {
     
     private func fetchEmployees() {
         guard let company = company, let employees = company.employees?.allObjects as? [Employee] else { return }
-        self.employees = employees
+        
+        shortNameEmployees = employees.filter {
+            if let name = $0.name {
+                return name.count < 6
+            }
+            return false
+        }
+        
+        longNameEmployees = employees.filter {
+            if let name = $0.name {
+                return name.count > 6 && name.count < 9
+            }
+            return false
+        }
+        
+        reallyLongNameEmployees = employees.filter {
+            if let name = $0.name {
+                return name.count > 9
+            }
+            return false
+        }
+        
+        allEmployees = [shortNameEmployees, longNameEmployees, reallyLongNameEmployees]
     }
     
     func stringifyDate(_ date: Date) -> String {

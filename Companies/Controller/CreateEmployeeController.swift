@@ -19,7 +19,7 @@ class CreateEmployeeController: UIViewController {
     private let nameLabel = UILabel.createBasicLabel(withText: "Name")
     private let nameTextfield = UITextField.createBasicTextField(withPlaceholder: "Enter name")
     private let birthdayLabel = UILabel.createBasicLabel(withText: "Birthday")
-    private let birthdayTextfield = UITextField.createBasicTextField(withPlaceholder: "MM/dd/yyyy")
+    private let birthdayTextfield = UITextField.createBasicTextField(withPlaceholder: "mm/dd/yyyy")
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
