@@ -17,15 +17,7 @@ extension EmployeesController {
         label.backgroundColor = .lightBlue
         label.textColor = .darkBlue
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        
-        if section == 0 {
-            label.text = EmployeeType.Executive.rawValue
-        } else if section == 1 {
-            label.text = EmployeeType.SeniorManagement.rawValue
-        } else {
-            label.text = EmployeeType.Staff.rawValue
-        }
-        
+        label.text = employeeTypes[section]
         return label
     }
     

@@ -17,6 +17,7 @@ class EmployeesController: UITableViewController {
     }
     
     var allEmployees = [[Employee]]()
+    let employeeTypes = [EmployeeType.Executive.rawValue, EmployeeType.SeniorManagement.rawValue, EmployeeType.Staff.rawValue]
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -34,11 +35,11 @@ class EmployeesController: UITableViewController {
     
     func fetchEmployees() {
         guard let company = company, let employees = company.employees?.allObjects as? [Employee] else { return }
-
-        let executive = employees.filter {$0.type == EmployeeType.Executive.rawValue}
-        let seniorManagement = employees.filter {$0.type == EmployeeType.SeniorManagement.rawValue}
-        let staff = employees.filter {$0.type == EmployeeType.Staff.rawValue}
-        allEmployees = [executive, seniorManagement, staff]
+        allEmployees.removeAll()
+        
+        for type in employeeTypes {
+            allEmployees.append(employees.filter {$0.type == type})
+        }
     }
     
     func stringifyDate(_ date: Date) -> String {
