@@ -10,11 +10,12 @@ import CoreData
 
 class CompaniesAutoUpdateController: UITableViewController {
     // MARK: - Properties
-    let fetchedResultsController: NSFetchedResultsController<Company> = {
+    lazy var fetchedResultsController: NSFetchedResultsController<Company> = {
         let request: NSFetchRequest<Company> = Company.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
         let context = CoreDataManager.shared.persistentContainer.viewContext
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
         
         do {
             try frc.performFetch()
@@ -42,7 +43,7 @@ class CompaniesAutoUpdateController: UITableViewController {
     @objc private func handleAdd() {
         let context = CoreDataManager.shared.persistentContainer.viewContext
         let company = Company(context: context)
-        company.name = "BMW"
+        company.name = "ZZZ"
         CoreDataManager.shared.save()
     }
 }
@@ -58,5 +59,39 @@ extension CompaniesAutoUpdateController {
         let company = fetchedResultsController.object(at: indexPath)
         cell.company = company
         return cell
+    }
+}
+
+// MARK: - NSFetchedResultsControllerDelegate
+extension CompaniesAutoUpdateController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .move:
+            if let indexPath = indexPath, let newIndexPath = newIndexPath {
+                tableView.moveRow(at: indexPath, to: newIndexPath)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        @unknown default:
+            break
+        }
     }
 }
