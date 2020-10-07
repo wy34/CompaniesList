@@ -12,6 +12,7 @@ class CompaniesAutoUpdateController: UITableViewController {
     // MARK: - Properties
     let fetchedResultsController: NSFetchedResultsController<Company> = {
         let request: NSFetchRequest<Company> = Company.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         let context = CoreDataManager.shared.persistentContainer.viewContext
         let nrc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         return nrc
