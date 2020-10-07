@@ -17,7 +17,7 @@ class CompanyCell: UITableViewCell {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMM dd, yyyy"
-            let foundedDateString = dateFormatter.string(from: company.founded!)
+            let foundedDateString = dateFormatter.string(from: company.founded ?? Date())
 
             nameDateLabel.text = "\(company.name ?? "") - Founded \(foundedDateString)"
 
