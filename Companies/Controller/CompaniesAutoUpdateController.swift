@@ -52,17 +52,15 @@ class CompaniesAutoUpdateController: UITableViewController {
     
     @objc func handleDelete() {
         let request: NSFetchRequest<Company> = Company.fetchRequest()
-        request.predicate = NSPredicate(format: "name CONTAINS %@", "b")
+        request.predicate = NSPredicate(format: "name CONTAINS %@", "B")
         let context = CoreDataManager.shared.persistentContainer.viewContext
         
         do {
             let companiesWithB = try context.fetch(request)
             
             companiesWithB.forEach { (company) in
-                context.delete(company)
+                CoreDataManager.shared.delete(company)
             }
-            
-            try? context.save()
         } catch let err {
             print(err)
         }
@@ -77,7 +75,7 @@ extension CompaniesAutoUpdateController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = IndentedLabel()
-        label.text = "HEADER"
+        label.text = fetchedResultsController.sectionIndexTitles[section]
         label.backgroundColor = .lightBlue
         return label
     }
@@ -100,6 +98,10 @@ extension CompaniesAutoUpdateController {
 
 // MARK: - NSFetchedResultsControllerDelegate
 extension CompaniesAutoUpdateController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, sectionIndexTitleForSectionName sectionName: String) -> String? {
+        return sectionName
+    }
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
