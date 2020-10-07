@@ -14,8 +14,15 @@ class CompaniesAutoUpdateController: UITableViewController {
         let request: NSFetchRequest<Company> = Company.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         let context = CoreDataManager.shared.persistentContainer.viewContext
-        let nrc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        return nrc
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try frc.performFetch()
+        } catch let err {
+            print(err)
+        }
+        
+        return frc
     }()
     
     // MARK: - Lifecycle
@@ -27,6 +34,6 @@ class CompaniesAutoUpdateController: UITableViewController {
     // MARK: - Helpers
     func configureUI() {
         tableView.backgroundColor = .darkBlue
-        setupNavBarStyle(withTitle: "Title")
+        setupNavBarStyle(withTitle: "Company Auto Updates")
     }
 }
