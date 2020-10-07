@@ -28,12 +28,29 @@ class CompaniesAutoUpdateController: UITableViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableview()
         configureUI()
     }
     
     // MARK: - Helpers
-    func configureUI() {
+    func configureTableview() {
         tableView.backgroundColor = .darkBlue
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+    }
+    
+    func configureUI() {
         setupNavBarStyle(withTitle: "Company Auto Updates")
+    }
+}
+
+// MARK: - UITableViewDelegate/Datasource
+extension CompaniesAutoUpdateController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchedResultsController.sections![section].numberOfObjects
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        return cell
     }
 }
