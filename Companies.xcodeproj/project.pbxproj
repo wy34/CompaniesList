@@ -34,6 +34,7 @@
 		3DD8C52B25203F7E007739F7 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8C52A25203F7E007739F7 /* UIViewController.swift */; };
 		3DF6EFD325282273003D1254 /* IndentedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF6EFD225282273003D1254 /* IndentedLabel.swift */; };
 		3DF6EFF225290DB7003D1254 /* EmployeeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF6EFF125290DB7003D1254 /* EmployeeType.swift */; };
+		3DF6F07C252D6C33003D1254 /* CompaniesAutoUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF6F07B252D6C33003D1254 /* CompaniesAutoUpdateController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		3DD8C52A25203F7E007739F7 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		3DF6EFD225282273003D1254 /* IndentedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndentedLabel.swift; sourceTree = "<group>"; };
 		3DF6EFF125290DB7003D1254 /* EmployeeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeType.swift; sourceTree = "<group>"; };
+		3DF6F07B252D6C33003D1254 /* CompaniesAutoUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesAutoUpdateController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				3D52E65325257EBA00078F21 /* CreateCompanyController */,
 				3D183CA32526C7F400943565 /* EmployeesController */,
 				3D52E65B252585EF00078F21 /* CreateEmployeeController.swift */,
+				3DF6F07B252D6C33003D1254 /* CompaniesAutoUpdateController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D183CA92526C89400943565 /* UITableViewController.swift in Sources */,
+				3DF6F07C252D6C33003D1254 /* CompaniesAutoUpdateController.swift in Sources */,
 				3DD8C52B25203F7E007739F7 /* UIViewController.swift in Sources */,
 				3DD8C51B251FD280007739F7 /* CustomNavigationController.swift in Sources */,
 				3DD8C506251FCDC5007739F7 /* HomeController.swift in Sources */,

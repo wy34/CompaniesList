@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = scene
         window?.makeKeyAndVisible()
         
-        let navController = CustomNavigationController(rootViewController: HomeController())
+        let navController = CustomNavigationController(rootViewController: CompaniesAutoUpdateController())
         window?.rootViewController = navController
     }
 
