@@ -31,7 +31,6 @@ class CompaniesAutoUpdateController: UITableViewController {
         super.viewDidLoad()
         configureTableView(withCellClass: CompanyCell.self, andReuseId: "cellId")
         configureUI()
-        ServiceManager.shared.decode()
     }
     
     // MARK: - Helpers
@@ -41,6 +40,11 @@ class CompaniesAutoUpdateController: UITableViewController {
             UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(handleAdd)),
             UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(handleDelete))
         ]
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .white
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
     }
     
     // MARK: - Selectors
@@ -65,6 +69,11 @@ class CompaniesAutoUpdateController: UITableViewController {
         } catch let err {
             print(err)
         }
+    }
+    
+    @objc func handleRefresh() {
+        ServiceManager.shared.decode()
+        tableView.refreshControl?.endRefreshing()
     }
 }
 
