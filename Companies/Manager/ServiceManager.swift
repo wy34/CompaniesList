@@ -18,7 +18,7 @@ class ServiceManager {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
                     print(error)
-                    return 
+                    return
                 }
                 
                 if let data = data {
@@ -42,6 +42,10 @@ class ServiceManager {
                         } catch let err {
                             print(err)
                         }
+                        
+                        jsonCompany.employees?.forEach({ (jsonEmployee) in
+                            let employee = Employee(context: backgroundContext)
+                        })
                     })
                 }
             }.resume()

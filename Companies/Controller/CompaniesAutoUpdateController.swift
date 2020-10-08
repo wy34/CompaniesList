@@ -31,6 +31,7 @@ class CompaniesAutoUpdateController: UITableViewController {
         super.viewDidLoad()
         configureTableView(withCellClass: CompanyCell.self, andReuseId: "cellId")
         configureUI()
+        ServiceManager.shared.decode()
     }
     
     // MARK: - Helpers
