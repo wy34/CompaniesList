@@ -36,16 +36,23 @@ class ServiceManager {
                         let foundedDate = formatter.date(from: jsonCompany.founded)
                         company.founded = foundedDate
                         
+                        jsonCompany.employees?.forEach({ (jsonEmployee) in
+                            let employee = Employee(context: backgroundContext)
+                            let employeeInfo = EmployeeInformation(context: backgroundContext)
+                            employeeInfo.birthday = formatter.date(from: jsonEmployee.birthday)
+                            
+                            employee.name = jsonEmployee.name
+                            employee.type = jsonEmployee.type
+                            employee.company = company
+                            employee.employeeInformation = employeeInfo
+                        })
+                        
                         do {
                             try backgroundContext.save()
                             try backgroundContext.parent?.save()
                         } catch let err {
                             print(err)
                         }
-                        
-                        jsonCompany.employees?.forEach({ (jsonEmployee) in
-                            let employee = Employee(context: backgroundContext)
-                        })
                     })
                 }
             }.resume()

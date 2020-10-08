@@ -95,6 +95,12 @@ extension CompaniesAutoUpdateController {
         cell.company = company
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let employeesListController = EmployeesController()
+        employeesListController.company = fetchedResultsController.object(at: indexPath)
+        navigationController?.pushViewController(employeesListController, animated: true)
+    }
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
