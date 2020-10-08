@@ -6,23 +6,43 @@
 //
 
 import Foundation
+import CoreData
 
 class ServiceManager {
     static let shared = ServiceManager()
         
-    func decode(completion: @escaping ([JSONCompany]?) -> Void) {
+    func decode() {
         let urlString = "https://api.letsbuildthatapp.com/intermediate_training/companies"
         
         if let url = URL(string: urlString) {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
                     print(error)
-                    completion(nil)
+                    return 
                 }
                 
                 if let data = data {
                     let jsonDecoder = JSONDecoder()
                     let companies = try? jsonDecoder.decode([JSONCompany].self, from: data)
+                    let backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+                    backgroundContext.parent = CoreDataManager.shared.persistentContainer.viewContext
+                    
+                    companies?.forEach({ (jsonCompany) in
+                        let company = Company(context: backgroundContext)
+                        company.name = jsonCompany.name
+                        
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "MM/dd/yyyy"
+                        let foundedDate = formatter.date(from: jsonCompany.founded)
+                        company.founded = foundedDate
+                        
+                        do {
+                            try backgroundContext.save()
+                            try backgroundContext.parent?.save()
+                        } catch let err {
+                            print(err)
+                        }
+                    })
                 }
             }.resume()
         }
